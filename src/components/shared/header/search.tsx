@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from '../../ui/select'
 import { APP_NAME } from '@/lib/constants'
+import { getAllCategories } from '@/lib/actions/product.actions'
 // import { getSetting } from '@/lib/actions/setting.actions'
 // import { getTranslations } from 'next-intl/server'
 
@@ -22,7 +23,7 @@ export default async function Search() {
 
 //   const t = await getTranslations()
 
-const categories = ['men','women']
+const categories =  await getAllCategories()
   return (
     <form action='/search' method='GET' className='flex  items-stretch h-10 '>
       <Select name='category'>

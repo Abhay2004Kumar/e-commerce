@@ -1,11 +1,22 @@
-import { CartSchema, OrderInputSchema, OrderItemSchema, ProductInputSchema, ShippingAddressSchema, UserInputSchema, UserSignInSchema, UserSignUpSchema } from '@/lib/validator';
+import { CartSchema, OrderInputSchema, OrderItemSchema, ProductInputSchema, ReviewInputSchema, ShippingAddressSchema, UserInputSchema, UserNameSchema, UserSignInSchema, UserSignUpSchema } from '@/lib/validator';
 import { z } from 'zod'; 
+
+  //review
+  export type IReviewInput = z.infer<typeof ReviewInputSchema>
+  export type IReviewDetails = IReviewInput & {
+    _id: string
+    createdAt: string
+    user: {
+      name: string
+    }
+  }
 
 export type IProductInput = z.infer<typeof ProductInputSchema>  
 
 export type Data = {
     users: IUserInput[]
     products: IProductInput[]
+
     reviews: {
       title: string
       rating: number
@@ -34,3 +45,5 @@ export type Data = {
   export type IUserInput = z.infer<typeof UserInputSchema>
   export type IUserSignIn = z.infer<typeof UserSignInSchema>
   export type IUserSignUp = z.infer<typeof UserSignUpSchema>
+  export type IUserName = z.infer<typeof UserNameSchema>
+
