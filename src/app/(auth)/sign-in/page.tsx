@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
-
+import { GoogleSignInForm } from './google-signin-form'
 import SeparatorWithOr from '@/components/shared/separator-or'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
@@ -42,7 +42,7 @@ export default async function SignInPage(props: {
             <CredentialsSignInForm />
             <SeparatorWithOr />
             <div className='mt-4'>
-              {/* <GoogleSignInForm /> */}
+              <GoogleSignInForm />
             </div>
           </div>
         </CardContent>
