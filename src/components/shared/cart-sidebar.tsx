@@ -30,7 +30,7 @@ export default function CartSidebar() {
      <div className='fixed border-l h-full'>
         <div className='p-2 h-full flex flex-col gap-2 justify-center items-center'>
           <div className='text-center space-y-2'>
-            <div> {('Cart.Subtotal')}</div>
+            <div> Subtotal</div>
             <div className='font-bold '>
               <ProductPrice price={itemsPrice} plain />
             </div>
@@ -47,7 +47,7 @@ export default function CartSidebar() {
               )}
               href='/cart'
             >
-              {('Cart.Go to Cart')}
+              Go to Cart
             </Link>
             <Separator className='mt-3' />
           </div>

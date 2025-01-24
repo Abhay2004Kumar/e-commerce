@@ -41,9 +41,9 @@ const Pagination = ({ page, totalPages, urlParamName }: PaginationProps) => {
         disabled={Number(page) <= 1}
         className='w-24'
       >
-        <ChevronLeft /> {('Search.Previous')}
+        <ChevronLeft /> {('Previous')}
       </Button>
-      {('Search.Page')} {page} {('Search.of')} {totalPages}
+      {('Page')} {page} {('of')} {totalPages}
       <Button
         size='lg'
         variant='outline'
@@ -51,7 +51,7 @@ const Pagination = ({ page, totalPages, urlParamName }: PaginationProps) => {
         disabled={Number(page) >= totalPages}
         className='w-24'
       >
-        {('Search.Next')} <ChevronRight />
+        Next<ChevronRight />
       </Button>
     </div>
   )

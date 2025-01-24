@@ -25,10 +25,10 @@ export default async function UserButton() {
           <div className='flex items-center'>
             <div className='flex flex-col text-xs text-left'>
               <span>
-                {('Header.Hello')},{' '}
-                {session ? session.user.name : ('Header.sign in')}
+                Hello,{' '}
+                {session ? session.user.name : 'Sign In'}
               </span>
-              <span className='font-bold'>{('Header.Account & Orders')}</span>
+              <span className='font-bold'>Account & Orders</span>
             </div>
             <ChevronDownIcon />
           </div>
@@ -47,15 +47,15 @@ export default async function UserButton() {
             </DropdownMenuLabel>
             <DropdownMenuGroup>
               <Link className='w-full' href='/account'>
-                <DropdownMenuItem>{('Header.Your account')}</DropdownMenuItem>
+                <DropdownMenuItem>Your Account</DropdownMenuItem>
               </Link>
               <Link className='w-full' href='/account/orders'>
-                <DropdownMenuItem>{('Header.Your orders')}</DropdownMenuItem>
+                <DropdownMenuItem>Your Orders</DropdownMenuItem>
               </Link>
 
               {session.user.role === 'Admin' && (
                 <Link className='w-full' href='/admin/overview'>
-                  <DropdownMenuItem>{('Header.Admin')}</DropdownMenuItem>
+                  <DropdownMenuItem>Admin</DropdownMenuItem>
                 </Link>
               )}
             </DropdownMenuGroup>
@@ -65,7 +65,7 @@ export default async function UserButton() {
                   className='w-full py-4 px-2 h-4 justify-start'
                   variant='ghost'
                 >
-                  {('Header.Sign out')}
+                  Sign Out
                 </Button>
               </form>
             </DropdownMenuItem>

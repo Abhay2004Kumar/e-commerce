@@ -26,10 +26,10 @@ export default function Footer() {
       <div className='p-4'>
         <div className='flex justify-center  gap-3 text-sm'>
           <Link href='/page/conditions-of-use'>
-            {('Footer.Conditions of Use')}
+          Conditions of Use
           </Link>
-          <Link href='/page/privacy-policy'>{('Footer.Privacy Notice')}</Link>
-          <Link href='/page/help'>{('Footer.Help')}</Link>
+          <Link href='/page/privacy-policy'>Privacy Notice</Link>
+          <Link href='/page/help'>Help</Link>
         </div>
         <div className='flex justify-center text-sm'>
           <p> © 2025 {APP_NAME}</p>

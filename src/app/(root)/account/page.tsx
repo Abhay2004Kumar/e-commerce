@@ -1,6 +1,6 @@
 import BrowsingHistoryList from '@/components/shared/browsing-history-list'
 import { Card, CardContent } from '@/components/ui/card'
-import { Home, PackageCheckIcon, User } from 'lucide-react'
+import {  PackageCheckIcon, User } from 'lucide-react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
@@ -46,7 +46,7 @@ export default function AccountPage() {
           </Link>
         </Card>
 
-        <Card>
+        {/* <Card>
           <Link href='/account/addresses'>
             <CardContent className='flex items-start gap-4 p-6'>
               <div>
@@ -60,7 +60,7 @@ export default function AccountPage() {
               </div>
             </CardContent>
           </Link>
-        </Card>
+        </Card> */}
       </div>
       <BrowsingHistoryList className='mt-16' />
     </div>

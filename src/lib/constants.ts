@@ -24,15 +24,10 @@ export const AVAILABLE_PAYMENT_METHODS = [
         name: 'Cash on Delivery',
         comission: 0,
         isDefault: false,
-    },
-    {
-        name: 'Bank Transfer',
-        comission: 0,
-        isDefault: false,
     }
 ]
 
-export const DEFAULT_PAYMENT_METHOD = process.env.DEFAULT_PAYMENT_METHOD || 'PayPal'
+export const DEFAULT_PAYMENT_METHOD = process.env.DEFAULT_PAYMENT_METHOD || 'Stripe'
 
 export const AVAILABLE_DELIVERY_DATES =[
     {
