@@ -78,13 +78,13 @@ export default async function UserButton() {
                   className={cn(buttonVariants(), 'w-full')}
                   href='/sign-in'
                 >
-                  {('Header.Sign in')}
+                  Sign In
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuLabel>
               <div className='font-normal'>
-                {('Header.New Customer')}?{' '}
+                New Customer?{' '}
                 <Link href='/sign-up'>{('Header.Sign up')}</Link>
               </div>
             </DropdownMenuLabel>
