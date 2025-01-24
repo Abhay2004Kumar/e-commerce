@@ -10,11 +10,11 @@ export const SENDER_EMAIL = process.env.SENDER_EMAIL || 'onboarding@resend.dev'
 export const SENDER_NAME = process.env.SENDER_NAME || APP_NAME
 
 export const AVAILABLE_PAYMENT_METHODS = [
-    {
-        name: 'PayPal',
-        comission: 0,
-        isDefault: true,
-    },
+    // {
+    //     name: 'PayPal',
+    //     comission: 0,
+    //     isDefault: true,
+    // },
     {
         name: 'Stripe',
         comission: 2.9,
