@@ -85,7 +85,7 @@ export default async function UserButton() {
             <DropdownMenuLabel>
               <div className='font-normal'>
                 New Customer?{' '}
-                <Link href='/sign-up'>{('Header.Sign up')}</Link>
+                <Link href='/sign-up'>Sign Up</Link>
               </div>
             </DropdownMenuLabel>
           </DropdownMenuContent>
