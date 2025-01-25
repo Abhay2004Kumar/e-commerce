@@ -8,8 +8,6 @@ import { getAllCategories, getProductsByTag, getProductsForCard } from "@/lib/ac
 import data from "@/lib/data"
 import { toSlug } from "@/lib/utils"
 export default async function Page(){
-  
-
     const categories = (await getAllCategories()).slice(0, 4)
     const newArrivals = await getProductsForCard({
       tag: 'new-arrival',
