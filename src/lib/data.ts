@@ -1081,20 +1081,8 @@ const data: Data = {
         },
         {
           name: 'Browsing History',
-          href: '/#browsing-history',
-        },
-        {
-          name: 'Customer Service',
-          href: '/page/customer-service',
-        },
-        {
-          name: 'About Us',
-          href: '/page/about-us',
-        },
-        {
-          name: 'Help',
-          href: '/page/help',
-        },
+          href: '#browsing-history',
+        }
       ],
       carousels: [
         {

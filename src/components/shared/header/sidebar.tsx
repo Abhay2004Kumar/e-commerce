@@ -98,11 +98,7 @@ export default async function Sidebar({
                 Your Account
               </Link>
             </DrawerClose>{' '}
-            <DrawerClose asChild>
-              <Link href='/page/customer-service' className='item-button'>
-                Customer Service
-              </Link>
-            </DrawerClose>
+          
             {session ? (
               <form action={SignOut} className='w-full'>
                 <Button

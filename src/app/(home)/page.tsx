@@ -73,7 +73,7 @@ export default async function Page(){
               </CardContent>
             </Card>
         </div>
-        <div className="p-4 bg-background">
+        <div id="browsing-history" className="p-4 bg-background">
           <BrowsingHistoryList />
         </div>
         </>
