@@ -22,12 +22,12 @@ const categories = await getAllCategories()
               className='flex items-center header-button font-extrabold text-2xl m-1 '
             >
               <Image
-                src='icons/logo.svg'
+                src='icons/logo1.svg'
                 width={40}
                 height={40}
                 alt={`${APP_NAME} logo`}
               />
-             {APP_NAME}
+            {APP_NAME}
             </Link>
           </div>
 

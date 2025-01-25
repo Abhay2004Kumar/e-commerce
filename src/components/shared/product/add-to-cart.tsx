@@ -39,14 +39,14 @@ export default function AddToCart({
         try {
           addItem(item, 1)
           toast({
-            description: ('Product.Added to Cart'),
+            description: 'Add to Cart',
             action: (
               <Button
                 onClick={() => {
                   router.push('/cart')
                 }}
               >
-                {('Product.Go to Cart')}
+               Go to Cart
               </Button>
             ),
           })
@@ -58,7 +58,7 @@ export default function AddToCart({
         }
       }}
     >
-      {('Product.Add to Cart')}
+      Add to Cart
     </Button>
   ) : (
     <div className='w-full space-y-2'>
@@ -68,7 +68,7 @@ export default function AddToCart({
       >
         <SelectTrigger className=''>
           <SelectValue>
-            {('Product.Quantity')}: {quantity}
+            Quantity: {quantity}
           </SelectValue>
         </SelectTrigger>
         <SelectContent position='popper'>
@@ -95,7 +95,7 @@ export default function AddToCart({
           }
         }}
       >
-        {('Product.Add to Cart')}
+       Add to Cart
       </Button>
       <Button
         variant='secondary'
@@ -112,7 +112,7 @@ export default function AddToCart({
         }}
         className='w-full rounded-full '
       >
-        {('Product.Buy Now')}
+        Buy Now 
       </Button>
     </div>
   )

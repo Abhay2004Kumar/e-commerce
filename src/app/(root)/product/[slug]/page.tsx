@@ -72,7 +72,7 @@ const session = await auth()
           <div className='flex w-full flex-col gap-2 md:p-5 col-span-2'>
             <div className='flex flex-col gap-3'>
               <p className='p-medium-16 rounded-full bg-grey-500/10   text-grey-500'>
-                {('Product.Brand')} {product.brand} {product.category}
+                Brand: {product.brand} {product.category}
               </p>
               <h1 className='font-bold text-lg lg:text-xl'>{product.name}</h1>
                 <div className='flex items-center gap-2'>
@@ -106,7 +106,7 @@ const session = await auth()
             <Separator className='my-2' />
             <div className='flex flex-col gap-2'>
               <p className='p-bold-20 text-grey-600'>
-                {('Product.Description')}:
+                Description:
               </p>
               <p className='p-medium-16 lg:p-regular-18'>
                 {product.description}
@@ -125,11 +125,11 @@ const session = await auth()
                 )}
                 {product.countInStock !== 0 ? (
                   <div className='text-green-700 text-xl'>
-                    {('Product.In Stock')}
+                    In Stock
                   </div>
                 ) : (
                   <div className='text-destructive text-xl'>
-                    {('Product.Out of Stock')}
+                    Out of Stock
                   </div>
                 )}
                   {product.countInStock!==0 && (
