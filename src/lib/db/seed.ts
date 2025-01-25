@@ -5,6 +5,10 @@ import { cwd } from 'process'
 import { loadEnvConfig } from '@next/env'
 import User from './models/user.model'
 import Review from './models/review.model'
+import Order from './models/order.model'
+import { IOrderInput, OrderItem, ShippingAddress } from '@/types'
+import { calculateFutureDate, calculatePastDate, generateId, round2 } from '../utils'
+import { AVAILABLE_DELIVERY_DATES } from '../constants'
 
 
 loadEnvConfig(cwd())
@@ -41,7 +45,22 @@ const main = async () => {
           }
         }
         const createdReviews = await Review.insertMany(rws)
+
+        await Order.deleteMany()
+        const orders = []
+        for(let i=0;i<200;i++){
+          orders.push(
+            await generateOrder(
+              i,
+              createdUser.map((x) => x._id),
+              createdProducts.map((x) => x._id)
+            )
+          )
+        }
+        const createdOrders = await Order.insertMany(orders)
+
         console.log({
+          createdOrders,
             createdUser,
             createdProducts,
             createdReviews,
@@ -54,5 +73,132 @@ const main = async () => {
         throw new Error('Failed to seed db')
     }
 }
+
+const generateOrder = async (
+  i: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  users: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  products: any
+): Promise<IOrderInput> => {
+  const product1 = await Product.findById(products[i % products.length])
+
+  const product2 = await Product.findById(
+    products[
+      i % products.length >= products.length - 1
+        ? (i % products.length) - 1
+        : (i % products.length) + 1
+    ]
+  )
+  const product3 = await Product.findById(
+    products[
+      i % products.length >= products.length - 2
+        ? (i % products.length) - 2
+        : (i % products.length) + 2
+    ]
+  )
+
+  if (!product1 || !product2 || !product3) throw new Error('Product not found')
+
+  const items = [
+    {
+      clientId: generateId(),
+      product: product1._id,
+      name: product1.name,
+      slug: product1.slug,
+      quantity: 1,
+      image: product1.images[0],
+      category: product1.category,
+      price: product1.price,
+      countInStock: product1.countInStock,
+    },
+    {
+      clientId: generateId(),
+      product: product2._id,
+      name: product2.name,
+      slug: product2.slug,
+      quantity: 2,
+      image: product2.images[0],
+      category: product1.category,
+      price: product2.price,
+      countInStock: product1.countInStock,
+    },
+    {
+      clientId: generateId(),
+      product: product3._id,
+      name: product3.name,
+      slug: product3.slug,
+      quantity: 3,
+      image: product3.images[0],
+      category: product1.category,
+      price: product3.price,
+      countInStock: product1.countInStock,
+    },
+  ]
+
+  const order = {
+    user: users[i % users.length],
+    items: items.map((item) => ({
+      ...item,
+      product: item.product,
+    })),
+    shippingAddress: data.users[i % users.length].address,
+    paymentMethod: data.users[i % users.length].paymentMethod,
+    isPaid: true,
+    isDelivered: true,
+    paidAt: calculatePastDate(i),
+    deliveredAt: calculatePastDate(i),
+    createdAt: calculatePastDate(i),
+    expectedDeliveryDate: calculateFutureDate(i % 2),
+    ...calcDeliveryDateAndPriceForSeed({
+      items: items,
+      shippingAddress: data.users[i % users.length].address,
+      deliveryDateIndex: i % 2,
+    }),
+  }
+  return order
+}
+
+export const calcDeliveryDateAndPriceForSeed = ({
+  items,
+  deliveryDateIndex,
+}: {
+  deliveryDateIndex?: number
+  items: OrderItem[]
+  shippingAddress?: ShippingAddress
+}) => {
+  const availableDeliveryDates = AVAILABLE_DELIVERY_DATES
+  const itemsPrice = round2(
+    items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  )
+
+  const deliveryDate =
+    availableDeliveryDates[
+      deliveryDateIndex === undefined
+        ? availableDeliveryDates.length - 1
+        : deliveryDateIndex
+    ]
+
+  const shippingPrice = deliveryDate.shippingPrice
+
+  const taxPrice = round2(itemsPrice * 0.15)
+  const totalPrice = round2(
+    itemsPrice +
+      (shippingPrice ? round2(shippingPrice) : 0) +
+      (taxPrice ? round2(taxPrice) : 0)
+  )
+  return {
+    availableDeliveryDates,
+    deliveryDateIndex:
+      deliveryDateIndex === undefined
+        ? availableDeliveryDates.length - 1
+        : deliveryDateIndex,
+    itemsPrice,
+    shippingPrice,
+    taxPrice,
+    totalPrice,
+  }
+}
+
 
 main()
